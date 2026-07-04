@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "concurrently \"npm run watch:css\" \"electron .\"",
+    "build:css": "tailwindcss -i ./src/ui/styles/input.css -o ./src/ui/styles/output.css",
+    "watch:css": "tailwindcss -i ./src/ui/styles/input.css -o ./src/ui/styles/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,5 +18,12 @@
     "puppeteer-core": "^25.3.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "autoprefixer": "^10.5.2",
+    "concurrently": "^10.0.3",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^3.4.19"
   }
 }
